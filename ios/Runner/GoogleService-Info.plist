@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>503219028250-0mh5s5jgidns4hi1muqqfrj2bb81k8im.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.503219028250-0mh5s5jgidns4hi1muqqfrj2bb81k8im</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBxau4OPqGFCNwDv4yDkVIwx5X1WMtCwUQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>503219028250</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.kanbanProject</string>
+	<key>PROJECT_ID</key>
+	<string>kanban-project-b1de6</string>
+	<key>STORAGE_BUCKET</key>
+	<string>kanban-project-b1de6.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:503219028250:ios:6903a3b8bcf07d72de6ca3</string>
+</dict>
+</plist>
