@@ -3,6 +3,10 @@
         {
             "filePath": "lib\\module",
             "group": "Default"
+        },
+        {
+            "filePath": "pubspec.yaml",
+            "group": "Default"
         }
     ]
 }
