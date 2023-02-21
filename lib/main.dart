@@ -6,7 +6,7 @@ import 'firebase_options.dart';
 import 'module/pages.dart';
 import './themes/themes.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -31,7 +31,7 @@ class App extends StatelessWidget {
           home: child,
         );
       },
-      child: const SignInPage(),
+      child: const WidgetTree(),
     );
   }
 }
