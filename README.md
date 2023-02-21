@@ -7,7 +7,7 @@ This is a simple Kanban board app built with Flutter. It allows you to create, m
 - Edit and delete existing tasks
 - Real-time data sync with Firebase
 
-Acknowledgements
+## Acknowledgements
 This app was built using the following open-source packages:
 
 - [Flutter](https://flutter.dev/)
