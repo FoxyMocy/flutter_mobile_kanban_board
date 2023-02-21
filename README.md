@@ -10,8 +10,8 @@ This is a simple Kanban board app built with Flutter. It allows you to create, m
 Acknowledgements
 This app was built using the following open-source packages:
 
-[Flutter](https://flutter.dev/)
-[Firebase](https://firebase.flutter.dev/)
-[provider](https://pub.dev/packages/provider)
-[cloud_firestore](https://pub.dev/packages/cloud_firestore)
-[intl](https://pub.dev/packages/intl)
+- [Flutter](https://flutter.dev/)
+- [Firebase](https://firebase.flutter.dev/)
+- [provider](https://pub.dev/packages/provider)
+- [cloud_firestore](https://pub.dev/packages/cloud_firestore)
+- [intl](https://pub.dev/packages/intl)
