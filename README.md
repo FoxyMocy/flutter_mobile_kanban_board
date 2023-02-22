@@ -2,7 +2,7 @@
 This is a simple Kanban board app built with Flutter. It allows you to create, move and delete tasks across different stages of your workflow. The app uses Firebase to store and sync the data across multiple devices.
 
 ## Download App on Play Store or GDrive
-- [Play_Store](https://play.google.com/store/apps/dev?id=5028283504980652787)
+- [Play_Store]()In-Review
 - [Google_Drive](https://drive.google.com/file/d/1YLTs2uD8Wsh0P9TU9pFJTweuUPyaqU6U/view?usp=share_link)
 
 ## The Instructions You Need
