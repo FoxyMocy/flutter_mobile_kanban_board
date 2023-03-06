@@ -10,14 +10,17 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   final User? user = Auth().currentUser;
   TextEditingController boardNameController = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
   String? errorMessage = '';
   final Stream<QuerySnapshot> _boardsStream =
       FirebaseFirestore.instance.collection('boards').snapshots();
-  // final userUid = user?.uid;
   String updateId = '';
+  UserService userService = UserService();
+  KanbanService kanbanService = KanbanService();
+  Future<UserModel>? userData;
 
-  final userCollection = FirebaseFirestore.instance.collection('users');
+  Future<void> initRetrieveData() async {
+    userData = userService.retrieveUser(user!.uid);
+  }
 
   // firestore db
   FirebaseFirestore db = FirebaseFirestore.instance;
@@ -50,14 +53,24 @@ class _MainPageState extends State<MainPage> {
       //Store Data
       final storeData = db.collection("boards").doc();
 
-      // creating user profile on db
-      await storeData.set({
-        "userId": userID,
-        "id": storeData.id,
-        "name": boardNameController.text,
-        "timeCreated": DateTime.now(),
-        "lastEdited": DateTime.now(),
-      });
+      // Store Data
+      BoardModel boardModel = BoardModel(
+        userId: userID,
+        id: storeData.id,
+        name: boardNameController.text,
+        timeCreated: DateTime.now(),
+        lastEdited: DateTime.now(),
+      );
+
+      // creating board on db
+      await kanbanService.createNewBoard(boardModel);
+      // await storeData.set({
+      //   "userId": userID,
+      //   "id": storeData.id,
+      //   "name": boardNameController.text,
+      //   "timeCreated": DateTime.now(),
+      //   "lastEdited": DateTime.now(),
+      // });
       print("create new boards successfully!");
     } on FirebaseAuthException catch (e) {
       print("Something is wrong: $e");
@@ -86,7 +99,7 @@ class _MainPageState extends State<MainPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    print(userCollection.snapshots());
+    initRetrieveData();
   }
 
   @override
@@ -114,21 +127,15 @@ class _MainPageState extends State<MainPage> {
                       color: AppColor().background,
                     ),
                     child: FutureBuilder(
-                        future: userCollection.doc(user?.uid).get(),
-                        builder: (context,
-                            AsyncSnapshot<DocumentSnapshot> snapshot) {
+                        future: userData,
+                        builder: (BuildContext context,
+                            AsyncSnapshot<UserModel> snapshot) {
                           if (snapshot.hasError) {
                             return const Text("Something went wrong");
                           }
 
-                          if (snapshot.hasData && !snapshot.data!.exists) {
-                            return const Text("Document does not exist");
-                          }
-
                           if (snapshot.connectionState ==
                               ConnectionState.done) {
-                            Map<String, dynamic> data =
-                                snapshot.data!.data() as Map<String, dynamic>;
                             return Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -145,21 +152,21 @@ class _MainPageState extends State<MainPage> {
                                       ),
                                       image: DecorationImage(
                                         image: NetworkImage(
-                                          data['photo_url'],
+                                          snapshot.data!.photoUrl!,
                                         ),
                                         fit: BoxFit.cover,
                                       ),
                                     ),
                                   ),
                                   Text(
-                                    data['fullname'],
+                                    snapshot.data!.fullname!,
                                     style: TextStyle(
                                         color: AppColor().black,
                                         fontSize: 16,
                                         fontWeight: FontWeight.w600),
                                   ),
                                   Text(
-                                    user?.email ?? 'User email',
+                                    snapshot.data!.email ?? 'User email',
                                     style: TextStyle(
                                         color: AppColor().black,
                                         fontSize: 14,

@@ -32,6 +32,6 @@ class App extends StatelessWidget {
         );
       },
       child: const WidgetTree(),
-    );
+    ); 
   }
 }
